@@ -11,10 +11,11 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = iSponsorBlock
 
-iSponsorBlock_FILES = iSponsorBlock.xm $(wildcard *.m)
-iSponsorBlock_EXTRA_FRAMEWORKS = Alderis
-iSponsorBlock_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
-iSponsorBlock_FRAMEWORKS = UIKit CoreGraphics AVFoundation CoreMedia QuartzCore
+$(TWEAK_NAME)_FILES = iSponsorBlock.xm $(wildcard *.m)
+$(TWEAK_NAME)_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
+$(TWEAK_NAME)_CFLAGS += -F./Frameworks
+$(TWEAK_NAME)_LDFLAGS += -F./Frameworks -framework Alderis
+$(TWEAK_NAME)_FRAMEWORKS = UIKit CoreGraphics AVFoundation CoreMedia QuartzCore
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
